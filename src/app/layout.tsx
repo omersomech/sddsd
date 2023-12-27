@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import NavBar from "./_components/NavBar";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,10 +23,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+    //winter or night
+    <html lang="en" data-theme="winter">
+      <body className={`font-sans ${inter.variable} flex h-screen flex-col `}>
         <TRPCReactProvider cookies={cookies().toString()}>
-          {children}
+          <NavBar />
+          <div className="flex flex-1 bg-gradient-to-b from-[#2e026d] to-[#15162c] ">
+            {children}
+          </div>
         </TRPCReactProvider>
       </body>
     </html>
